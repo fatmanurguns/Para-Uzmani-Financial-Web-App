@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Para Uzmanı - Gelirlerim</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/gelirler.css">
+</head>
+<body>
+
+    <!-- Üst Menü (giriş sonrası) -->
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <div class="logo">
+                <a href="dashboard.html">Para Uzmanı</a>
+            </div>
+
+            <ul class="top-menu">
+                <li><a href="dashboard.html">Ana Ekran</a></li>
+                <li><a href="profil.html">Profil</a></li>
+                <li><a href="varliklar.html">Varlıklarım</a></li>
+                <li><a href="borclar.html">Borçlarım</a></li>
+                <li><a href="gelirler.html" class="active">Gelirlerim</a></li>
+                <li><a href="giderler.html">Giderlerim</a></li>
+                <li><a href="faiz.html">Faiz Hesapla</a></li>
+                <li><a href="doviz.html">Döviz &amp; Kıymetli Maden</a></li>
+                <li><a href="tahmini.html">Tahmini Gelir–Gider</a></li>
+                <li><a href="index.html" class="logout-btn" onclick="cikisYap(event)">Çıkış Yap</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Ana İçerik -->
+    <div class="container">
+
+        <div class="page-header">
+            <h1>Gelirlerim</h1>
+            <p>
+                Bu sayfada maaş, burs ve diğer gelir kalemlerini listeleyebilirsin. 
+                Aşağıdaki formdan yeni gelir ekleyebilir, tablo üzerinden toplam aylık gelirini görebilirsin.
+            </p>
+        </div>
+
+        <!-- Özet kart: toplam gelir -->
+        <div class="summary-card">
+            <div class="summary-title">Toplam Aylık Gelir</div>
+            <div class="summary-value" id="toplam-gelir">0 TL</div>
+            <div class="summary-extra">
+                Aşağıdaki tabloya eklediğin tüm gelir kalemlerinin aylık toplam tutarı burada gösterilir.
+            </div>
+        </div>
+
+        <!-- Gelir ekleme formu -->
+        <!-- Gelir ekleme formu -->
+        <div class="card">
+            <h2>Yeni Gelir Ekle</h2>
+            <p>Temel gelir bilgilerini girerek listeye ekleyebilirsin. Maaş, ek iş, yatırım kazancı gibi gelir türlerini seçebilirsin.</p>
+
+            <div class="form-group">
+                <label for="gelir-adi">Gelir Adı</label>
+                <input type="text" id="gelir-adi" placeholder="Örn: Maaş, Ek İş, Temettü">
+            </div>
+
+            <div class="form-group">
+                <label for="gelir-kategori">Kategori</label>
+                <select id="gelir-kategori">
+                    <option value="">Seçiniz...</option>
+                    <option value="Maaş">Maaş</option>
+                    <option value="Ek İş">Ek İş</option>
+                    <option value="Freelance">Freelance</option>
+                    <option value="Yatırım Geliri">Yatırım Geliri</option>
+                    <option value="Kira Geliri">Kira Geliri</option>
+                    <option value="Faiz Geliri">Faiz Geliri</option>
+                    <option value="Döviz / Altın Kazancı">Döviz / Altın Kazancı</option>
+                    <option value="Diğer">Diğer</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="gelir-tutar">Tutar (TL)</label>
+                <input type="number" id="gelir-tutar" placeholder="Örn: 15000">
+            </div>
+
+            <div class="form-group">
+                <label for="gelir-not">Not (isteğe bağlı)</label>
+                <input type="text" id="gelir-not" placeholder="Örn: Prim dahil, aylık düzenli vb.">
+            </div>
+
+            <button class="btn btn-primary" onclick="gelirEkle()">Gelir Ekle</button>
+        </div>
+
+        <!-- Gelirler tablosu -->
+        <div class="card">
+            <h2>Gelir Listesi</h2>
+            <p>Eklediğin gelirler aşağıdaki tabloda gösterilir.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Gelir Adı</th>
+                        <th>Türü</th>
+                        <th>Tutar (TL)</th>
+                        <th>Not</th>
+                        <th>İşlem</th>
+                    </tr>
+                </thead>
+                <tbody id="gelir-tablo-govde">
+                    <!-- Başlangıçta boş -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Basit JS -->
+    <script src="js/gelirler.js">
+    </script>
+
+</body>
+</html>

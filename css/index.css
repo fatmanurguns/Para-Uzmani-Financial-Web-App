@@ -1,0 +1,254 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f7f9fc;
+            color: #333;
+        }
+
+        /* -------- ÜST MENÜ -------- */
+                .top-bar {
+            width: 100%;
+            background-color: #1e2a3b;
+            color: #fff;
+            padding: 12px 24px;
+        }
+
+        .top-bar-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .logo a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .logo a:visited,
+        .logo a:active,
+        .logo a:hover {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .top-menu {
+            list-style-type: none;
+            white-space: nowrap;
+        }
+
+        .top-menu li {
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        .top-menu a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 13px;
+            padding: 6px 10px;
+            border-radius: 4px;
+            border: 1px solid transparent;
+        }
+
+
+        /* -------- HERO (mavi büyük blok) -------- */
+        .hero {
+            width: 100%;
+            padding: 120px 20px;
+            background: linear-gradient(135deg, #3559ff, #4cc9f0);
+            color: white;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 35px auto;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .hero-buttons a {
+            padding: 14px 32px;
+            font-size: 18px;
+            text-decoration: none;
+            border-radius: 8px;
+            margin: 0 10px;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #3559ff;
+        }
+        .btn-primary:hover {
+            background: #e6e6e6;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+
+        /* -------- ÖZELLİKLER -------- */
+        .features-section {
+            max-width: 1150px;
+            margin: 60px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .features-header h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .features-header p {
+            max-width: 750px;
+            margin: auto;
+            color: #555;
+            margin-bottom: 40px;
+            font-size: 18px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 25px 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 48px;
+        }
+
+        .feature-title {
+            font-size: 22px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .feature-text {
+            margin: 15px 0;
+            line-height: 1.5;
+        }
+
+        .feature-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            background: #3559ff;
+            color: white;
+            border-radius: 8px;
+            font-size: 13px;
+        }
+
+
+        /* -------- ANA BÖLÜM – İNFO CARDS -------- */
+        .info-section {
+            max-width: 1150px;
+            margin: 60px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .info-header h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .info-header p {
+            max-width: 750px;
+            margin: auto;
+            color: #555;
+            margin-bottom: 40px;
+            font-size: 18px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .info-card {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+        }
+
+        .info-icon {
+            font-size: 40px;
+        }
+
+        .info-card h3 {
+            margin: 12px 0;
+        }
+
+        .info-card p {
+            line-height: 1.5;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .info-tag {
+            display: inline-block;
+            padding: 6px 12px;
+            background: #4cc9f0;
+            color: white;
+            border-radius: 8px;
+            font-size: 13px;
+        }
+
+        .info-tag-red {
+            display: inline-block;
+            padding: 6px 12px;
+            background: orange;
+            color: white;
+            border-radius: 8px;
+            font-size: 13px;
+        }
+
+        .disabled-card {
+            opacity: 0.6;
+        }
+
+        /* -------- FOOTER -------- */
+        .footer {
+            background: #1f1f1f;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Para Uzmanı - Giriş Yap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/giris.css">
+</head>
+<body>
+
+    <!-- Üst Menü -->
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <div class="logo">
+                <a href="index.html">Para Uzmanı ®</a>
+            </div>
+
+            <ul class="top-menu">
+                <li><a href="giris.html" class="active">Giriş Yap</a></li>
+                <li><a href="kayit.html">Kayıt Ol</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Ana İçerik -->
+    <div class="container">
+
+        <div class="form-page-header">
+            <h1>Hesabına Giriş Yap</h1>
+            <p>
+                Daha önce kayıt olduysan, kullanıcı adı veya e-posta adresinle birlikte 
+                şifreni girerek Para Uzmanı hesabına giriş yapabilirsin.
+            </p>
+        </div>
+
+        <div class="form-layout">
+
+            <!-- Sol tarafta bilgilendirici kart -->
+            <div class="form-info-card">
+                <h2>Tekrar Hoş Geldin!</h2>
+                <p>
+                    Giriş yaptıktan sonra, kişisel finans özet ekranına ulaşarak gelir-gider dengeni,
+                    varlıklarını ve borçlarını tek bakışta görebilirsin.
+                </p>
+                <ul class="form-info-list">
+                    <li>Son eklediğin gelir ve gider kayıtlarını incele.</li>
+                    <li>Varlık ve borç durumunu güncelle.</li>
+                    <li>Faiz ve döviz hesaplamalarını yeniden yap.</li>
+                    <li>Gelecekteki tahmini harcamalarını görüntüle.</li>
+                </ul>
+                <p style="margin-top:10px;">
+                    Şifreni unuttuysan, yeni bir hesap oluşturmak için Kayıt Ol sayfasını kullanabilirsin.
+                </p>
+            </div>
+
+            <!-- Sağ tarafta giriş formu -->
+            <div class="form-card">
+                <h2>Giriş Yap</h2>
+
+                <form id="login-form" action="#" method="post">
+                    <div class="form-group">
+                        <label for="login-id">Kullanıcı Adı veya E-posta <span class="required">*</span></label>
+                        <input type="text" id="login-id" name="login-id" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="login-password">Şifre <span class="required">*</span></label>
+                        <input type="password" id="login-password" name="login-password" required>
+                    </div>
+
+                    <div class="form-group-inline">
+                        <input type="checkbox" id="remember-me" name="remember-me">
+                        <label for="remember-me">Beni hatırla</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Giriş Yap</button>
+                    
+                    <div class="form-footer">
+                        Henüz bir hesabın yok mu?
+                        <a href="kayit.html">Kayıt ol.</a>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="js/giris.js">
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Para Uzmanı - Döviz & Kıymetli Maden</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/doviz.css">
+</head>
+<body>
+
+    <!-- Üst Menü (giriş sonrası) -->
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <div class="logo">
+                <a href="dashboard.html">Para Uzmanı</a>
+            </div>
+
+            <ul class="top-menu">
+                <li><a href="dashboard.html">Ana Ekran</a></li>
+                <li><a href="profil.html">Profil</a></li>
+                <li><a href="varliklar.html">Varlıklarım</a></li>
+                <li><a href="borclar.html">Borçlarım</a></li>
+                <li><a href="gelirler.html">Gelirlerim</a></li>
+                <li><a href="giderler.html">Giderlerim</a></li>
+                <li><a href="faiz.html">Faiz Hesapla</a></li>
+                <li><a href="doviz.html" class="active">Döviz &amp; Kıymetli Maden</a></li>
+                <li><a href="tahmini.html">Tahmini Gelir–Gider</a></li>
+                <li><a href="#" class="logout-btn" onclick="cikisYap(event)">Çıkış Yap</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Ana İçerik -->
+    <div class="container">
+
+        <div class="page-header">
+            <h1>Döviz &amp; Kıymetli Maden Dönüşümleri</h1>
+            <p>
+                Bu sayfada farklı para birimlerini (TL, USD, EUR, GBP, CNY vb.) birbirine
+                çevirebilir, ayrıca bu para birimlerinden altın, gümüş ve elmas cinsinden
+                yaklaşık değer hesaplayabilirsin.<br>
+                Kullanılan döviz kurları ve değerli maden fiyatları, sabit olarak belirlenmiştir.<br>
+                (1 USD = 42 TL, 1 EUR = 44 TL, 1 GBP = 50 TL, 1 CNY = 4.5 TL)<br>
+                (Altın = 5000 TL/gr, Gümüş = 30 TL/gr, Elmas = 150.000 TL/karat)
+
+            </p>
+        </div>
+
+        <!-- Döviz Çevirici -->
+        <div class="card">
+            <h2>Döviz Çevirici</h2>
+            <p>
+                Bir para birimindeki tutarı, başka bir para birimine örnek kur bilgilerine göre
+                çevirmek için kullanabilirsin.
+            </p>
+
+            <div class="form-row">
+                <div class="form-group-inline">
+                    <label for="dv-tutar">Tutar</label>
+                    <input type="number" id="dv-tutar" placeholder="Örn: 1000">
+                </div>
+
+                <div class="form-group-inline">
+                    <label for="dv-kaynak">Kaynak Para Birimi</label>
+                    <select id="dv-kaynak">
+                        <option value="TRY">TL (TRY)</option>
+                        <option value="USD">Dolar (USD)</option>
+                        <option value="EUR">Euro (EUR)</option>
+                        <option value="GBP">Pound (GBP)</option>
+                        <option value="CNY">Çin Yeni (CNY)</option>
+                    </select>
+                </div>
+
+                <div class="form-group-inline">
+                    <label for="dv-hedef">Hedef Para Birimi</label>
+                    <select id="dv-hedef">
+                        <option value="USD">Dolar (USD)</option>
+                        <option value="EUR">Euro (EUR)</option>
+                        <option value="GBP">Pound (GBP)</option>
+                        <option value="CNY">Çin Yeni (CNY)</option>
+                        <option value="TRY">TL (TRY)</option>
+                    </select>
+                </div>
+            </div>
+
+            <button class="btn btn-primary" onclick="dovizCevir()">Döviz Çevir</button>
+
+            <div class="result-box" id="dv-sonuc">
+                Henüz bir döviz çevirme işlemi yapılmadı.
+            </div>
+        </div>
+
+        <!-- Para Biriminden Kıymetli Madene -->
+        <div class="card">
+            <h2>Para Biriminden Kıymetli Madene Dönüşüm</h2>
+            <p>
+                Seçtiğin para birimindeki tutarın yaklaşık olarak kaç gram altın/gümüşe veya
+                kaç karat elmasa karşılık geldiğini görebilirsin.
+            </p>
+
+            <div class="form-row">
+                <div class="form-group-inline">
+                    <label for="pm-tutar">Tutar</label>
+                    <input type="number" id="pm-tutar" placeholder="Örn: 5000">
+                </div>
+
+                <div class="form-group-inline">
+                    <label for="pm-para">Para Birimi</label>
+                    <select id="pm-para">
+                        <option value="TRY">TL (TRY)</option>
+                        <option value="USD">Dolar (USD)</option>
+                        <option value="EUR">Euro (EUR)</option>
+                        <option value="GBP">Pound (GBP)</option>
+                        <option value="CNY">Çin Yeni (CNY)</option>
+                    </select>
+                </div>
+
+                <div class="form-group-inline">
+                    <label for="pm-maden">Kıymetli Maden</label>
+                    <select id="pm-maden">
+                        <option value="ALTIN">Altın (gram)</option>
+                        <option value="GUMUS">Gümüş (gram)</option>
+                        <option value="ELMAS">Elmas (karat)</option>
+                    </select>
+                </div>
+            </div>
+
+            <button class="btn btn-primary" onclick="paraBirimiMadenCevir()">Maden Değerini Hesapla</button>
+
+            <div class="result-box" id="pm-sonuc">
+                Henüz para biriminden kıymetli madene dönüşüm yapılmadı.
+            </div>
+        </div>
+
+        <!-- Kıymetli Madenden Para Birimine -->
+        <div class="card">
+            <h2>Kıymetli Madenden Para Birimine Dönüşüm</h2>
+            <p>
+                Elindeki altın/gümüş (gram) veya elmasın (karat) seçilen para birimindeki yaklaşık
+                karşılığını hesaplayabilirsin.
+            </p>
+
+            <div class="form-row">
+                <div class="form-group-inline">
+                    <label for="mp-miktar">Miktar</label>
+                    <input type="number" id="mp-miktar" placeholder="Örn: 10">
+                </div>
+
+                <div class="form-group-inline">
+                    <label for="mp-maden">Kıymetli Maden</label>
+                    <select id="mp-maden">
+                        <option value="ALTIN">Altın (gram)</option>
+                        <option value="GUMUS">Gümüş (gram)</option>
+                        <option value="ELMAS">Elmas (karat)</option>
+                    </select>
+                </div>
+
+                <div class="form-group-inline">
+                    <label for="mp-para">Para Birimi</label>
+                    <select id="mp-para">
+                        <option value="TRY">TL (TRY)</option>
+                        <option value="USD">Dolar (USD)</option>
+                        <option value="EUR">Euro (EUR)</option>
+                        <option value="GBP">Pound (GBP)</option>
+                        <option value="CNY">Çin Yeni (CNY)</option>
+                    </select>
+                </div>
+            </div>
+
+            <button class="btn btn-primary" onclick="madenParaBirimiCevir()">Para Değerini Hesapla</button>
+
+            <div class="result-box" id="mp-sonuc">
+                Henüz kıymetli madenden para birimine dönüşüm yapılmadı.
+            </div>
+        </div>
+
+        <!-- Küçük bilgilendirme -->
+        <div class="info-note">
+            Not: Bu sayfada kullanılan döviz kuru ve kıymetli maden fiyatları sadece
+            <strong>örnek amaçlıdır</strong>. Gerçek finansal kararlar için güncel verileri
+            kontrol etmen gerekir.
+        </div>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/doviz.js">
+    </script>
+
+</body>
+</html>

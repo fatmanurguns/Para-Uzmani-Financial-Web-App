@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Para Uzmanı - Profil</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/profil.css">
+</head>
+<body>
+
+    <!-- Üst Menü (giriş sonrası) -->
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <div class="logo">
+                <a href="dashboard.html">Para Uzmanı</a>
+            </div>
+
+            <ul class="top-menu">
+                <li><a href="dashboard.html">Ana Ekran</a></li>
+                <li><a href="profil.html" class="active">Profil</a></li>
+                <li><a href="varliklar.html">Varlıklarım</a></li>
+                <li><a href="borclar.html">Borçlarım</a></li>
+                <li><a href="gelirler.html">Gelirlerim</a></li>
+                <li><a href="giderler.html">Giderlerim</a></li>
+                <li><a href="faiz.html">Faiz Hesapla</a></li>
+                <li><a href="doviz.html">Döviz &amp; Kıymetli Maden</a></li>
+                <li><a href="tahmini.html">Tahmini Gelir–Gider</a></li>
+                <li><a href="#" class="logout-btn" onclick="cikisYap(event)">Çıkış Yap</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Ana İçerik -->
+    <div class="container">
+
+        <div class="profile-header">
+            <h1>Profil Bilgilerin</h1>
+            <p>
+                Bu sayfada Para Uzmanı hesabına ait temel bilgilerini görebilir ve istersen 
+                hemen aşağıdan güncelleyebilirsin.
+            </p>
+        </div>
+
+        <!-- Profil görüntüleme kartı -->
+        <div class="profile-card">
+            <div class="profile-row">
+                <span class="profile-label">Ad Soyad:</span>
+                <span id="p-name">Kullanıcı Adı</span>
+            </div>
+            <div class="profile-row">
+                <span class="profile-label">E-posta:</span>
+                <span id="p-email">ornek@mail.com</span>
+            </div>
+            <div class="profile-row">
+                <span class="profile-label">Kullanıcı Adı:</span>
+                <span id="p-username">kullanici123</span>
+            </div>
+        </div>
+
+        <!-- Profil düzenleme kartı -->
+        <div class="profile-edit-card">
+            <h2>Bilgileri Düzenle</h2><br>
+
+            <div class="form-group">
+                <label for="input-name">Ad Soyad</label>
+                <input type="text" id="input-name" placeholder="Yeni ad soyad">
+            </div>
+
+            <div class="form-group">
+                <label for="input-email">E-posta</label>
+                <input type="email" id="input-email" placeholder="Yeni e-posta">
+            </div>
+
+            <div class="form-group">
+                <label for="input-username">Kullanıcı Adı</label>
+                <input type="text" id="input-username" placeholder="Yeni kullanıcı adı">
+            </div>
+
+            <button class="btn btn-primary" onclick="profilGuncelle()">Kaydet</button>
+        </div>
+
+    </div>
+
+    <!-- Basit JS -->
+    <script src="js/profil.js">
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Para Uzmanı - Ana Ekran</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+    <!-- Üst Menü (giriş sonrası) -->
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <div class="logo">
+                <a href="dashboard.html">Para Uzmanı</a>
+            </div>
+
+            <ul class="top-menu">
+                <li><a href="dashboard.html" class="active">Ana Ekran</a></li>
+                <li><a href="profil.html">Profil</a></li>
+                <li><a href="varliklar.html">Varlıklarım</a></li>
+                <li><a href="borclar.html">Borçlarım</a></li>
+                <li><a href="gelirler.html">Gelirlerim</a></li>
+                <li><a href="giderler.html">Giderlerim</a></li>
+                <li><a href="faiz.html">Faiz Hesapla</a></li>
+                <li><a href="doviz.html">Döviz &amp; Kıymetli Maden</a></li>
+                <li><a href="tahmini.html">Tahmini Gelir–Gider</a></li>
+                <li><a href="#" class="logout-btn" onclick="cikisYap(event)">Çıkış Yap</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Ana İçerik -->
+    <div class="container">
+
+        <div class="dashboard-header">
+            <h1 id="hosgeldinMesaji">Hoş Geldin!</h1>
+            <p>
+                Aşağıda genel finansal durumunun özeti yer alıyor. Detaylı kayıt ekleme ve düzenleme için
+                üst menüdeki ilgili sayfaları kullanabilirsin.
+            </p>
+        </div>
+
+        <!-- Özet kartlar: varlık / borç / net -->
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-title">Toplam Varlıklar</div>
+                <div class="card-value" id="card-total-assets">0 TL</div>
+                <div class="card-extra">
+                    Varlıklarım sayfasında eklediğin:
+                    <ul>
+                        <li>Banka hesapları ve nakit</li>
+                        <li>Yatırım hesapları</li>
+                        <li>Diğer finansal varlıklar</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">Toplam Borçlar</div>
+                <div class="card-value" id="card-total-debts">0 TL</div>
+                <div class="card-extra">
+                    Borçlarım sayfasında eklediğin:
+                    <ul>
+                        <li>Kredi ve kredi kartı borçları</li>
+                        <li>Taksitli alışverişler</li>
+                        <li>Diğer borç ve yükümlülükler</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">Net Varlık</div>
+                <div class="card-value card-highlight" id="card-net-worth">0 TL</div>
+                <div class="card-extra">
+                    <strong>Hesaplama:</strong> Toplam varlıklar - toplam borçlar.  
+                    Bu değer, genel finansal gücünü özetler.
+                </div>
+            </div>
+        </div>
+
+        <!-- Özet kartlar: aylık gelir / gider / net -->
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-title">Aylık Gelir</div>
+                <div class="card-value" id="card-monthly-income">0 TL</div>
+                <div class="card-extra">
+                    Gelirlerim sayfasında yer alan:
+                    <ul>
+                        <li>Maaş ve düzenli ödemeler</li>
+                        <li>Burs ve ek gelirler</li>
+                        <li>Diğer aylık kazançlar</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">Aylık Gider</div>
+                <div class="card-value" id="card-monthly-expense">0 TL</div>
+                <div class="card-extra">
+                    Giderlerim sayfasında yer alan:
+                    <ul>
+                        <li>Fatura ve kira ödemeleri</li>
+                        <li>Market, ulaşım ve günlük harcamalar</li>
+                        <li>Eğlence ve diğer giderler</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">Aylık Net Durum</div>
+                <div class="card-value card-highlight" id="card-monthly-net">0 TL</div>
+                <div class="card-extra">
+                    <strong>Hesaplama:</strong> Aylık gelir - aylık gider.  
+                    Pozitif olması, her ay kenara para ayırabildiğin anlamına gelir.
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- Finansal Durum Çubuğu -->
+    <div class="fin-panel">
+        <h2>Genel Finansal Durumun</h2>
+        <p>
+            Net varlık ve aylık net durumuna göre hesaplanan gösterge.
+            
+        </p>
+
+        <div class="fin-bar-wrapper">
+            <div class="fin-bar">
+                <div class="fin-bar-inner" id="fin-bar-inner"></div>
+            </div>
+            <div class="fin-bar-text" id="fin-bar-text">
+                Henüz hesaplanmadı.
+            </div>
+            <div class="fin-bar-note" id="fin-bar-note">
+                Varlıklar, borçlar ve aylık net durumuna göre otomatik güncellenir.
+            </div>
+        </div>
+    </div>
+
+            <!-- Harcama Dağılımı Kartı -->
+        <div class="card">
+            <h2>Harcama Dağılımı</h2><br>
+            <p>
+                Giderlerim sayfasına eklediğin kayıtlar kullanılarak, hangi gider türüne
+                ne kadar harcama yaptığın ve toplam gider içindeki payı hesaplanır.
+            </p>
+
+            <table class="harcama-table">
+                <thead>
+                    <tr>
+                        <th>Gider Türü</th>
+                        <th>Toplam Tutar</th>
+                        <th>Toplam Gidere Oranı</th>
+                    </tr>
+                </thead>
+                <tbody id="harcama-kategori-tablo">
+                    <tr>
+                        <td colspan="3">Harcama analizi için veri yükleniyor...</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="harcama-comment" id="harcama-yorum">
+                En çok hangi kaleme harcama yaptığını görmek için Giderlerim sayfasına birkaç kayıt ekleyebilirsin.
+            </p>
+        </div>
+
+                <!-- Gelir Dağılımı Kartı -->
+        <div class="card">
+            <h2>Gelir Dağılımı</h2><br>
+            <p>
+                Gelirlerim sayfasına eklediğin kayıtlar kullanılarak, hangi gelir türünden
+                ne kadar kazandığın ve toplam gelir içindeki payı hesaplanır.
+            </p>
+
+            <table class="gelir-table">
+                <thead>
+                    <tr>
+                        <th>Gelir Türü</th>
+                        <th>Toplam Tutar</th>
+                        <th>Toplam Gelire Oranı</th>
+                    </tr>
+                </thead>
+                <tbody id="gelir-kategori-tablo">
+                    <tr>
+                        <td colspan="3">Gelir analizi için veri yükleniyor...</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="gelir-comment" id="gelir-yorum">
+                Gelir türlerine göre dağılımı görebilmek için Gelirlerim sayfasına birkaç kayıt ekleyebilirsin.
+            </p>
+        </div>
+
+    <!-- Basit JavaScript -->
+    <script src="js/dashboard.js">
+    </script>
+
+</body>
+</html>

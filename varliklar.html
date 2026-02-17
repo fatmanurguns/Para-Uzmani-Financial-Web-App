@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Para Uzmanı - Varlıklarım</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/varliklar.css">
+</head>
+<body>
+
+    <!-- Üst Menü (giriş sonrası) -->
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <div class="logo">
+                <a href="dashboard.html">Para Uzmanı</a>
+            </div>
+
+            <ul class="top-menu">
+                <li><a href="dashboard.html">Ana Ekran</a></li>
+                <li><a href="profil.html">Profil</a></li>
+                <li><a href="varliklar.html" class="active">Varlıklarım</a></li>
+                <li><a href="borclar.html">Borçlarım</a></li>
+                <li><a href="gelirler.html">Gelirlerim</a></li>
+                <li><a href="giderler.html">Giderlerim</a></li>
+                <li><a href="faiz.html">Faiz Hesapla</a></li>
+                <li><a href="doviz.html">Döviz &amp; Kıymetli Maden</a></li>
+                <li><a href="tahmini.html">Tahmini Gelir–Gider</a></li>
+                <li><a href="index.html" class="logout-btn" onclick="cikisYap(event)">Çıkış Yap</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Ana İçerik -->
+    <div class="container">
+
+        <div class="page-header">
+            <h1>Varlıklarım</h1>
+            <p>
+                Bu sayfada banka hesabın, nakit paran ve yatırım varlıkların gibi finansal 
+                varlıklarını listeleyebilirsin. Aşağıdaki formdan yeni varlık ekleyebilir,
+                tablo üzerinden genel durumunu görebilirsin.
+            </p>
+        </div>
+
+        <!-- Özet kart: toplam varlık -->
+        <div class="summary-card">
+            <div class="summary-title">Toplam Varlıklar</div>
+            <div class="summary-value" id="toplam-varlik">0 TL</div>
+            <div class="summary-extra">
+                Aşağıdaki tabloya eklediğin tüm varlıkların toplam tutarı burada gösterilir.
+            </div>
+        </div>
+
+        <!-- Varlık ekleme formu -->
+        <div class="card">
+            <h2>Yeni Varlık Ekle</h2>
+            <p>Temel varlık bilgilerini girerek listeye ekleyebilirsin.</p>
+
+            <div class="form-group">
+                <label for="varlik-adi">Varlık Adı</label>
+                <input type="text" id="varlik-adi" placeholder="Örn: Banka Hesabı, Nakit, Altın">
+            </div>
+
+            <div class="form-group">
+                <label for="varlik-turu">Varlık Türü</label>
+                <input type="text" id="varlik-turu" placeholder="Örn: Mevduat, Nakit, Gram Altın">
+            </div>
+
+            <div class="form-group">
+                <label for="varlik-tutar">Tutar (TL)</label>
+                <input type="number" id="varlik-tutar" placeholder="Örn: 5000">
+            </div>
+
+            <div class="form-group">
+                <label for="varlik-not">Not (isteğe bağlı)</label>
+                <input type="text" id="varlik-not" placeholder="Örn: Öğrenci hesabı, acil durum birikimi vb.">
+            </div>
+
+            <button class="btn btn-primary" onclick="varlikEkle()">Varlık Ekle</button>
+        </div>
+
+        <!-- Varlıklar tablosu -->
+        <div class="card">
+            <h2>Varlık Listesi</h2>
+            <p>Eklediğin varlıklar aşağıdaki tabloda gösterilir. İstersen satırları silebilirsin.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Varlık Adı</th>
+                        <th>Türü</th>
+                        <th>Tutar (TL)</th>
+                        <th>Not</th>
+                        <th>İşlem</th>
+                    </tr>
+                </thead>
+                <tbody id="varlik-tablo-govde">
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <!-- Basit JS -->
+    <script src="js/varliklar.js">
+
+    </script>
+
+    </body>
+</html>

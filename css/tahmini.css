@@ -1,0 +1,266 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f5f7fb;
+    color: #222;
+}
+
+/* Üst menü */
+.top-bar {
+    width: 100%;
+    background-color: #1e2a3b;
+    color: #fff;
+    padding: 12px 24px;
+}
+
+.top-bar-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.logo a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.logo a:visited,
+.logo a:active,
+.logo a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.top-menu {
+    list-style-type: none;
+    white-space: nowrap;
+}
+
+.top-menu li {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.top-menu a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 13px;
+    padding: 6px 10px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+}
+
+/* Aktif sayfa */
+.top-menu a.active {
+    border-color: #fff;
+    background-color: #ffffff22;
+}
+
+/* Üzerine gelince */
+.top-menu a:hover {
+    border-color: #fff;
+}
+
+/* Çıkış Yap butonu */
+.top-menu a.logout-btn {
+    background-color: #c62828;
+    border-color: #b71c1c;
+    color: #fff;
+}
+
+.top-menu a.logout-btn:hover {
+    background-color: #d32f2f;
+    border-color: #ef9a9a;
+}
+
+/* Mobil uyum */
+@media (max-width: 768px) {
+    .top-bar-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .top-menu li {
+        margin-left: 0;
+        margin-right: 8px;
+    }
+}
+
+/* Ana içerik */
+.container {
+    max-width: 1000px;
+    margin: 24px auto 32px auto;
+    padding: 0 16px;
+}
+
+.page-header {
+    margin-bottom: 18px;
+}
+
+.page-header h1 {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.page-header p {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.6;
+}
+
+/* Kartlar */
+.card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 16px 16px 18px 16px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    border: 1px solid #e0e0e0;
+    margin-bottom: 18px;
+}
+
+.card h2 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: #1e2a3b;
+}
+
+.card p {
+    font-size: 13px;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+/* Özet liste */
+.summary-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 10px;
+}
+
+.summary-list li {
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.card-note {
+    font-size: 12px;
+    color: #777;
+}
+
+/* Form alanı */
+.inline-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.form-group {
+    min-width: 180px;
+    max-width: 220px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 4px;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 7px 9px;
+    border-radius: 4px;
+    border: 1px solid #cfd8dc;
+    font-size: 13px;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #1e88e5;
+    box-shadow: 0 0 0 2px #bbdefb;
+}
+
+/* Butonlar */
+.btn {
+    display: inline-block;
+    padding: 9px 16px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.btn-primary {
+    background-color: #1e88e5;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #1669b5;
+}
+
+/* Sonuç kutusu (büyütülmüş) */
+.result-box {
+    margin-top: 12px;
+    padding: 14px 16px;
+    border-radius: 8px;
+    background-color: #f1f4fb;
+    border: 1px solid #cfd8dc;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #263238;
+}
+
+/* Genel durum barı */
+.durum-bar {
+    width: 100%;
+    height: 18px;
+    border-radius: 999px;
+    background-color: #e0e0e0;
+    overflow: hidden;
+    margin: 10px 0 6px 0;
+}
+
+.durum-bar-inner {
+    height: 100%;
+    width: 0%;
+    border-radius: 999px;
+    background-color: #b0bec5;
+    transition: width 0.25s ease, background-color 0.25s ease;
+}
+
+.durum-bar-text {
+    font-size: 13px;
+    color: #555;
+}
+
+/* Küçük ekranlar */
+@media (max-width: 600px) {
+    .container {
+        padding: 0 12px;
+    }
+
+    .page-header h1 {
+        font-size: 22px;
+    }
+
+    .card {
+        padding: 14px;
+    }
+}

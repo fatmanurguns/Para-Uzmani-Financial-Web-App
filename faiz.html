@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Para Uzmanı - Faiz İşlemleri</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/faiz.css">
+</head>
+<body>
+
+    <!-- Üst Menü (giriş sonrası) -->
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <div class="logo">
+                <a href="dashboard.html">Para Uzmanı</a>
+            </div>
+
+            <ul class="top-menu">
+                <li><a href="dashboard.html">Ana Ekran</a></li>
+                <li><a href="profil.html">Profil</a></li>
+                <li><a href="varliklar.html">Varlıklarım</a></li>
+                <li><a href="borclar.html">Borçlarım</a></li>
+                <li><a href="gelirler.html">Gelirlerim</a></li>
+                <li><a href="giderler.html">Giderlerim</a></li>
+                <li><a href="faiz_islemleri.html" class="active">Faiz Hesapla</a></li>
+                <li><a href="doviz.html">Döviz &amp; Kıymetli Maden</a></li>
+                <li><a href="tahmini.html">Tahmini Gelir–Gider</a></li>
+                <li><a href="#" class="logout-btn" onclick="cikisYap(event)">Çıkış Yap</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Ana İçerik -->
+    <div class="container">
+
+        <div class="page-header">
+            <h1>Faiz İşlemleri</h1>
+            <p>
+                Bu sayfada temel faiz hesaplamalarını yapabilirsin. Aşağıdaki kartlardan:
+                birikim / mevduat getirini, gelecekteki bir ödemenin bugünkü değerini,
+                eşit taksitli kredinin taksitlerini ve nominal faize göre efektif yıllık faiz oranını
+                hesaplayabilirsin.
+            </p>
+        </div>
+
+        <!-- 1. Kart: Faiz Getirisi (Gelecek Değer) -->
+        <div class="card">
+            <h2>Faiz Getirisi (Gelecek Değer)</h2>
+            <p>
+                Anapara, yıllık faiz oranı, vade ve yıl içindeki dönem sayısına göre
+                birikiminin vade sonunda kaç TL olacağını hesaplar.
+            </p>
+
+            <div class="form-group">
+                <label for="fg-anapara">Anapara (TL)</label>
+                <input type="number" id="fg-anapara" placeholder="Örn: 10000">
+            </div>
+
+            <div class="form-group">
+                <label for="fg-oran">Yıllık Faiz Oranı (%)</label>
+                <input type="number" id="fg-oran" placeholder="Örn: 25">
+            </div>
+
+            <div class="form-group">
+                <label for="fg-vade">Vade (Yıl)</label>
+                <input type="number" id="fg-vade" placeholder="Örn: 2">
+            </div>
+
+            <div class="form-group">
+                <label for="fg-donem">Yıl İçindeki Dönem Sayısı</label>
+                <input type="number" id="fg-donem" placeholder="Örn: 12 (aylık)" value="12">
+            </div>
+
+            <button class="btn btn-primary" onclick="faizGetirisiHesapla()">Hesapla</button>
+
+            <div class="result-box" id="fg-sonuc">
+                Henüz bir hesaplama yapılmadı.
+            </div>
+        </div>
+
+        <!-- 2. Kart: Bugünkü Değer Hesabı -->
+        <div class="card">
+            <h2>Bugünkü Değer Hesabı</h2>
+            <p>
+                Gelecekte alacağın bir tutarın, seçtiğin faiz oranı ve vade bilgisine göre
+                bugün kaç TL değerinde olduğunu hesaplar.
+            </p>
+
+            <div class="form-group">
+                <label for="pv-fv">Gelecek Değer (TL)</label>
+                <input type="number" id="pv-fv" placeholder="Örn: 20000">
+            </div>
+
+            <div class="form-group">
+                <label for="pv-oran">Yıllık Faiz Oranı (%)</label>
+                <input type="number" id="pv-oran" placeholder="Örn: 30">
+            </div>
+
+            <div class="form-group">
+                <label for="pv-vade">Vade (Yıl)</label>
+                <input type="number" id="pv-vade" placeholder="Örn: 3">
+            </div>
+
+            <div class="form-group">
+                <label for="pv-donem">Yıl İçindeki Dönem Sayısı</label>
+                <input type="number" id="pv-donem" placeholder="Örn: 4 (3 aylık)" value="4">
+            </div>
+
+            <button class="btn btn-primary" onclick="bugunkuDegerHesapla()">Hesapla</button>
+
+            <div class="result-box" id="pv-sonuc">
+                Henüz bir hesaplama yapılmadı.
+            </div>
+        </div>
+
+        <!-- 3. Kart: Eşit Taksitli Kredi Hesabı -->
+        <div class="card">
+            <h2>Eşit Taksitli Kredi Hesabı</h2>
+            <p>
+                Kredi tutarı, yıllık faiz oranı ve toplam taksit sayısına göre aylık taksit tutarını,
+                toplam geri ödeme ve toplam faiz ödemesini hesaplar.
+            </p>
+
+            <div class="form-group">
+                <label for="kr-tutar">Kredi Tutarı (TL)</label>
+                <input type="number" id="kr-tutar" placeholder="Örn: 100000">
+            </div>
+
+            <div class="form-group">
+                <label for="kr-oran">Yıllık Faiz Oranı (%)</label>
+                <input type="number" id="kr-oran" placeholder="Örn: 30">
+            </div>
+
+            <div class="form-group">
+                <label for="kr-donem">Toplam Taksit Sayısı (Ay)</label>
+                <input type="number" id="kr-donem" placeholder="Örn: 60">
+            </div>
+
+            <button class="btn btn-primary" onclick="krediHesapla()">Hesapla</button>
+
+            <div class="result-box" id="kr-sonuc">
+                Henüz bir hesaplama yapılmadı.
+            </div>
+        </div>
+
+        <!-- 4. Kart: Efektif Yıllık Faiz Oranı -->
+        <div class="card">
+            <h2>Efektif Yıllık Faiz Oranı</h2>
+            <p>
+                Nominal yıllık faiz oranı ve yıl içindeki dönem sayısına göre
+                efektif yıllık faiz oranını hesaplar.
+            </p>
+
+            <div class="form-group">
+                <label for="ef-nominal">Nominal Yıllık Faiz Oranı (%)</label>
+                <input type="number" id="ef-nominal" placeholder="Örn: 30">
+            </div>
+
+            <div class="form-group">
+                <label for="ef-donem">Yıl İçindeki Dönem Sayısı</label>
+                <input type="number" id="ef-donem" placeholder="Örn: 12 (aylık)" value="12">
+            </div>
+
+            <button class="btn btn-primary" onclick="efektifOranHesapla()">Hesapla</button>
+
+            <div class="result-box" id="ef-sonuc">
+                Henüz bir hesaplama yapılmadı.
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Basit JavaScript -->
+    <script src="js/faiz.js">
+    </script>
+
+</body>
+</html>
